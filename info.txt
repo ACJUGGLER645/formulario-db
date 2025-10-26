@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario con Selector de Tema</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="tema-claro">
+  <div class="container">
+    <!-- Botones para cambiar tema -->
+    <div class="color-buttons">
+      <button data-tema="tema-claro" title="Claro"></button>
+      <button data-tema="tema-oscuro" title="Oscuro"></button>
+      <button data-tema="tema-morado" title="Morado-Rosa"></button>
+    </div>
+
+    <h1>Formulario Básico</h1>
+    <form id="formulario">
+      <div class="content">
+        <label for="nombre">Nombre</label>
+        <input type="text" placeholder="Bartolomeo" id="nombre" maxlength="21" required>
+
+        <label for="apellido">Apellido</label>
+        <input type="text" placeholder="Anacleto" id="apellido" maxlength="21" required>
+
+        <label for="celular">Celular</label>
+        <input type="tel" placeholder="+57" id="celular" maxlength="10" pattern="\d{10}" required>
+
+        <label for="email">Correo electrónico</label>
+        <input type="email" placeholder="bartolomeoanacleto@email.com" id="email" required>
+
+        <button type="submit" id="enviar">Enviar datos</button>
+      </div>
+    </form>
+
+    <!-- Contador -->
+    <p class="contador">Cambios de tema: <span id="contador">0</span></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+const botonesTema = document.querySelectorAll(".color-buttons button");
+const body = document.body;
+const contadorSpan = document.getElementById("contador");
+
+let contador = 0;
+
+// Función para actualizar contador
+function actualizarContador() {
+  contador++;
+  contadorSpan.textContent = contador;
+}
+
+// Cambiar tema
+botonesTema.forEach((boton) => {
+  boton.addEventListener("click", () => {
+    const tema = boton.getAttribute("data-tema");
+
+    // Quita clases anteriores
+    body.classList.remove("tema-claro", "tema-oscuro", "tema-morado");
+
+    // Agrega el nuevo tema
+    body.classList.add(tema);
+
+    // Suma al contador
+    actualizarContador();
+  });
+});
+
+// Formulario (solo muestra confirmación, no afecta contador)
+const formulario = document.getElementById("formulario");
+
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let nombre = document.getElementById("nombre").value;
+  let apellido = document.getElementById("apellido").value;
+  let celular = document.getElementById("celular").value;
+  let correo = document.getElementById("email").value;
+
+  confirm(
+    "Los datos ingresados son:" +
+      "\nNombre: " + nombre +
+      "\nApellido: " + apellido +
+      "\nCelular: " + celular +
+      "\nEmail: " + correo +
+      "\n\n¿Son correctos?"
+  );
+
+  formulario.reset();
+});
+
+body {
+  font-family: 'Gill Sans', Calibri, sans-serif;
+  margin: 0;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Contenedor */
+.container {
+  width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #f9f9f9;
+  position: relative;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Botones en la esquina */
+.color-buttons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 2px solid black;
+}
+
+.color-buttons button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+/* Colores de botones */
+[data-tema="tema-claro"] { background: #ffffff; border: 1px solid #ccc; }
+[data-tema="tema-oscuro"] { background: #1a1a1a; }
+[data-tema="tema-morado"] { background: linear-gradient(45deg, #9b59b6, #e91e63); }
+
+/* Inputs y botones */
+.content label,
+.content input,
+.content button {
+  display: block;
+  width: 95%;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.content input {
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.content button {
+  margin: 30px auto 0 auto;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.content button:hover {
+  background: #9f0f9f;
+}
+
+/* Contador */
+.contador {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* ===== TEMAS ===== */
+
+/* Claro */
+.tema-claro {
+  background: #ffffff;
+  color: #000000;
+}
+.tema-claro .container {
+  background: #f9f9f9;
+  color: #000;
+}
+
+/* Oscuro */
+.tema-oscuro {
+  background: #1a1a1a;
+  color: #f0f0f0;
+}
+.tema-oscuro .container {
+  background: #2c2c2c;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+/* Morado-Rosa */
+.tema-morado {
+  background: linear-gradient(135deg, #9b59b6, #e91e63);
+  color: #fff;
+}
+.tema-morado .container {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #fff;
+  color: #fff;
+}
+

@@ -1,0 +1,135 @@
+/* style.css */
+body {
+  font-family: 'Gill Sans', Calibri, sans-serif;
+  margin: 0;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Contenedor */
+.container {
+  width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #f9f9f9;
+  position: relative;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Botones en la esquina */
+.color-buttons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* boton circular */
+.color-buttons button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+/* Colores de botones */
+[data-tema="tema-claro"] { background: #ffffff; border: 1px solid #ccc; }
+[data-tema="tema-oscuro"] { background: #1a1a1a; }
+[data-tema="tema-morado"] { background: linear-gradient(45deg, #9b59b6, #e91e63); }
+
+/* Inputs y botones */
+.content label,
+.content input,
+.content button {
+  display: block;
+  width: 95%;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.content input {
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.content button {
+  margin: 30px auto 0 auto;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.content button:hover {
+  background: #3e8e41;
+}
+
+/* Contador */
+.contador {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* Mensaje exito */
+.mensaje-exito {
+  color: green;
+  font-weight: bold;
+}
+
+/* ===== TEMAS ===== */
+
+/* Claro */
+.tema-claro {
+  background: #ffffff;
+  color: #000000;
+}
+.tema-claro .container {
+  background: #f9f9f9;
+  color: #000;
+}
+
+/* Oscuro */
+.tema-oscuro {
+  background: #1a1a1a;
+  color: #f0f0f0;
+}
+.tema-oscuro .container {
+  background: #2c2c2c;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+/* Morado-Rosa */
+.tema-morado {
+  background: linear-gradient(135deg, #9b59b6, #e91e63);
+  color: #fff;
+}
+.tema-morado .container {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+}
+.tema-morado .content input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+}
+.tema-morado .content input::placeholder {
+  color: #ddd;
+}
+.tema-morado .content button {
+  background: #e91e63;;
+}
+.tema-morado .content button:hover {
+  background: #c2185b;
+}
