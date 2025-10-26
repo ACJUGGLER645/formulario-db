@@ -73,5 +73,11 @@ Cada archivo cumple un rol específico:
 - `estilo.css` proporciona la presentación visual.  
 - `script.js` añade interactividad y validación de datos.
 
+---
+
+##Evidencia 
+
+(img/prueba.png)
+
 Este diseño modular permite mantener el código organizado, comprensible y fácil de mantener.
 
