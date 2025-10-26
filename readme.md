@@ -75,9 +75,10 @@ Cada archivo cumple un rol específico:
 
 ---
 
-##Evidencia 
+## Evidencia
 
-(img/prueba.png)
+![Descripción de la imagen](img/prueba.png)
+
 
 Este diseño modular permite mantener el código organizado, comprensible y fácil de mantener.
 
