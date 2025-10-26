@@ -80,9 +80,11 @@ formulario.addEventListener("submit", (e) => {
       "\n\n¿Son correctos?"
   );
 
-  if (ok) {
-    formulario.submit();
-  } else {
-    return false;
-  }
+if (ok) {
+  alert("✅ ¡Formulario enviado correctamente!");
+  formulario.reset(); // Limpia el formulario
+} else {
+  alert("❌ Envío cancelado.");
+}
+
 });
